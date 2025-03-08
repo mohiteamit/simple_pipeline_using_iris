@@ -32,9 +32,31 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM Run the Streamlit app
-echo Launching the Streamlit app...
-streamlit run app.py
+REM Prompt the user to choose which application to run
+echo.
+echo Please choose which application to run:
+echo   1 - Streamlit App
+echo   2 - FastAPI App
+echo   3 - Both Streamlit and FastAPI Apps
+choice /C 123 /M "Enter your choice: "
 
-REM Keep the command prompt open
+if errorlevel 3 (
+    echo Launching both Streamlit and FastAPI apps...
+    start cmd /k "streamlit run app.py"
+    start cmd /k "uvicorn api:app --reload"
+    goto end
+)
+
+if errorlevel 2 (
+    echo Launching FastAPI app...
+    uvicorn api:app --reload
+    goto end
+)
+
+if errorlevel 1 (
+    echo Launching Streamlit app...
+    streamlit run app.py
+)
+
+:end
 pause
