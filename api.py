@@ -1,3 +1,10 @@
+"""
+Iris Classification API Module
+
+This module loads the Iris classifier pipeline from disk, defines iris class mappings, 
+and initializes a FastAPI application that serves predictions using the provided features.
+"""
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pickle
@@ -15,8 +22,16 @@ iris_classes = {0: "setosa", 1: "versicolor", 2: "virginica"}
 
 app = FastAPI(title="Iris Classification API")
 
-# Pydantic model for input validation
 class IrisInput(BaseModel):
+    """
+    Data model for iris flower features.
+
+    Attributes:
+        sepal_length (float): Length of the sepal.
+        sepal_width (float): Width of the sepal.
+        petal_length (float): Length of the petal.
+        petal_width (float): Width of the petal.
+    """
     sepal_length: float
     sepal_width: float
     petal_length: float
