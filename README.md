@@ -116,6 +116,9 @@ By default, the server will start at `http://127.0.0.1:8000`. You can access the
 - **Customization:**  
   Feel free to extend the pipeline (e.g., add more preprocessing steps) or enhance the Streamlit app and FastAPI endpoints (e.g., add logging, error handling, or additional visualizations).
 
+## App screenshot
+![alt text](image.png)
+
 ## Contributing
 
 Contributions and improvements are welcome. Please open an issue or submit a pull request for any suggestions or enhancements.
